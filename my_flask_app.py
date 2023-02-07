@@ -4,6 +4,7 @@ import datetime
 
 app = Flask(__name__)
 debug = False
+submission_filename = 'user_submissions.txt'
 
 @app.route("/", methods=('GET', 'POST'))
 def home():
@@ -23,7 +24,4 @@ def minecraft_page():
     return render_template('minecraft_page.html')
     
 if __name__ == "__main__":
-    if debug:
-        logging.basicConfig(filename = f"C:\\startup_handling\\web_logs\\{datetime.datetime.now().strftime('%Y%m%d%H%M')}_webserver.log", level=logging.DEBUG, format = f"%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s")
-        submission_filename = f"C:\\startup_handling\\web_submissions\\{datetime.datetime.now().strftime('%Y%m%d%H%M')}_web_submissions.txt"
     app.run(host='0.0.0.0', port=80, debug=True)
