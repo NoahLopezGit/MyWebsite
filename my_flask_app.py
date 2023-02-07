@@ -21,7 +21,7 @@ def home():
 
 @app.route("/minecraft")
 def minecraft_page():
-    if is_server_down('mc.kylegay.com', 25565):
+    if is_server_down('localhost', 25565):
         mc_server_status = "Server is currently down"
     else:
         mc_server_status = "Server is currently up"
