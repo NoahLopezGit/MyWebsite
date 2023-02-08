@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <!-- saved from url=(0061)http://kylegay.com/templates/W3.CSS Template.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Big L's Clubhouse</title>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Big L's Clubhouse</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="{{ url_for('static', filename='w3.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='w3.css') }}">
+  <script src="{{ url_for('static', filename='javascript_stuff.js') }}"></script>
 </head>
-<body style="background-color: skyblue">
 
+<body style="background-color: skyblue">
 <!-- Header -->
 <header class="w3-display-container w3-content w3-center" style="max-width:1500px" id="home">
   <img class="w3-image" src="{{ url_for('static', filename='Big_Ls_Clubhouse.png') }}" alt="Me" width="1500" height="600">
-  <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center" style="background-color: rgba(255,255,255,.5);">
+  <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center" style="background-color: rgba(255,255,255,.5); min-width: 600px;">
     <h1 style="color:black">Big L's Clubhouse</h1>
-    <h5 style="font-size:20px;color:black;">Welcome {{user_ip}}, we've been waiting.</h5>
+    <h1 id="welcome_tag" style="font-size:20px;color:black;"></h1>
   </div>
   
   <!-- Navbar (placed at the bottom of the header image) -->
@@ -55,5 +58,5 @@
   </form><br>
 
 </div>
-
+  <script>changing_welcome_message()</script>
 </body></html>
