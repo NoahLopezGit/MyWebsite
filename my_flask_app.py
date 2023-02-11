@@ -1,9 +1,6 @@
 from flask import Flask, render_template, jsonify, request
+from flask_method_module import create_response
 import socket
-import os
-import openai
-
-openai.api_key = "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"
 
 app = Flask(__name__)
 debug = False
@@ -45,23 +42,6 @@ def is_server_down(host, port):
         return False
     except socket.error as e:
         return True
-
-def get_welcome_message(name):
-    response = openai.Completion.create(
-                model="text-davinci-003",
-                prompt=f"create a welcome message for {name}",
-                temperature=0.6,
-            )
-    return response.choices[0]
-
-def create_response(inquiry):
-    response = openai.Completion.create(
-            model="text-davinci-003",
-            prompt=str(inquiry),
-            temperature=0.6,
-        )
-    return "Noah: " + response.choices[0]['text'].lstrip('>?')
-
 
 if __name__ == "__main__":
     app.debug=True
