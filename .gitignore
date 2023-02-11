@@ -1,4 +1,5 @@
 venv
 user_submissions.txt
+openai_api_key.json
 __pycache__
 .env

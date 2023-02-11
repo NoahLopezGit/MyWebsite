@@ -1,7 +1,8 @@
 import os
 import openai
+import json
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = json.load(open('openai_api_key.json'))['OPENAI_API_KEY']
 
 def get_welcome_message(name):
     response = openai.Completion.create(
