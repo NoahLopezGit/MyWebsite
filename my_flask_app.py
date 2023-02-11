@@ -5,7 +5,7 @@ import socket
 
 app = Flask(__name__)
 debug = False
-submission_filename = 'user_submissions.txt'
+submission_filename = '/opt/FlaskApp/FlaskApp/user_submissions.txt'
 
 @app.route("/", methods=('GET', 'POST'))
 def home():
