@@ -1,0 +1,21 @@
+<!--this will look like a terminal-->
+<!doctype html>
+<html>
+<head>
+    <title>Talk to me</title>
+    <meta name="talk to me" content="talk to me">
+    <meta name="talk to me" content="talk to me">
+    <link rel="stylesheet" href="{{ url_for('static', filename='terminal.css') }}">
+    <script src="{{ url_for('static', filename='javascript_modules.js') }}"></script>
+</head>
+
+<body>
+    <div id="console_history">
+    </div>
+    <div id="user_input">
+    </div>
+
+
+    <script>type_response('Noah: Hello, you\'ve reached my personal line. What\'s up?')</script>
+</body>
+</html>

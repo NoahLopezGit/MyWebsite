@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request
-import logging
-import datetime
+from flask import Flask, render_template, jsonify, request
 import socket
+from flask_method_module import get_welcome_message, create_response
+
 
 app = Flask(__name__)
 debug = False
@@ -27,7 +27,15 @@ def minecraft_page():
         mc_server_status = "Server is currently up"
     return render_template('minecraft_page.html', mc_server_status=mc_server_status)
 
-import socket
+@app.route("/talk_to_me", methods=('GET',))
+def contact_page():
+    return render_template('contact.html')
+
+@app.route("/console_response/<user_input>", methods=('GET',))
+def user_response(user_input):
+    response = create_response(user_input)
+    print(response)
+    return jsonify(response=response)
 
 def is_server_down(host, port):
     try:
