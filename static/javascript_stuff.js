@@ -177,7 +177,7 @@ const name_bank = [
     "Lori"
 ];
 
-async function typeText(text) {
+function typeText(text) {
     var heading = document.getElementById("welcome_tag");
     var personal_typing_instance = valid_typing_instance + 1;
     valid_typing_instance = personal_typing_instance;
