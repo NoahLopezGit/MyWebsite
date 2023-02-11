@@ -45,4 +45,5 @@ def is_server_down(host, port):
         return True
 
 if __name__ == "__main__":
+    app.debug=True
     app.run(host='0.0.0.0', port=80, debug=True)
