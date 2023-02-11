@@ -1,4 +1,4 @@
-#!/opt/FlaskApp/FlaskApp/venv/bin/python
+#!/opt/FlaskApp/FlaskApp/venv python3
 
 import sys
 import logging
