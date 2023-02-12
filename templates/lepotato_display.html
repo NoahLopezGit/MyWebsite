@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <script src="{{ url_for('static', filename='lepotato_update.js') }}"></script>
+<head>
+    <title>LePotato Live Display</title>
+</head>
+
+<body>
+    <div>
+        <h1>LePotato</h1>
+        <h1 id="time"></h1>
+        <h1 id="temp"></h1>
+        <h1 id="pressure"></h1>
+    </div>
+    <script>lepotato_display_updateAllEvents()</script>
+    <script>setInterval(lepotato_display_updateAllEvents, 5000)</script>
+</body>
+
+</html>

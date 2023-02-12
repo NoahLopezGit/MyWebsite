@@ -1,10 +1,12 @@
 from flask import Flask, render_template, jsonify, request
-from flask_method_module import create_response
-import socket
+from flask_method_module import create_response, is_server_down, LePotatoDisplayData
+import requests
+import json
 
 app = Flask(__name__)
 debug = False
 submission_filename = '/opt/FlaskApp/FlaskApp/user_submissions.txt'
+lepotato_data = LePotatoDisplayData()
 
 @app.route("/", methods=('GET', 'POST'))
 def home():
@@ -30,18 +32,29 @@ def minecraft_page():
 def contact_page():
     return render_template('contact.html')
 
-@app.route("/console_response/<user_input>", methods=('GET',))
+@app.route("/API/talk_to_me/<user_input>", methods=('GET',))
 def user_response(user_input):
     response = create_response(user_input)
     print(response)
     return jsonify(response=response)
 
-def is_server_down(host, port):
-    try:
-        s = socket.create_connection((host, port), timeout=2)
-        return False
-    except socket.error as e:
-        return True
+@app.route('/API/lepotato-host', methods=('POST',))
+def lepotato_webhost_update():
+    if request.method == 'POST':
+        request_json = request.get_json()
+        lepotato_data.time = request_json['time']
+        lepotato_data.temp = request_json['temp']
+        lepotato_data.pressure = request_json['pressure']
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+
+@app.route('/lepotato-display', methods=('GET',))
+def get_lepotato_webdisplay():
+    return render_template('lepotato_display.html')
+
+@app.route('/API/lepotato-display/<value_id>', methods=('GET',))
+def get_lepotato_webdisplay_data(value_id):
+    print(value_id, getattr(lepotato_data, value_id))
+    return json.dumps({value_id:getattr(lepotato_data, value_id)})
 
 if __name__ == "__main__":
     app.debug=True

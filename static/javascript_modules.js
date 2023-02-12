@@ -177,50 +177,50 @@ const name_bank = [
     "Lori"
 ];
 
-// function typeText() {
-//     let heading = document.getElementById("welcome_tag");
-//     let personal_typing_instance = valid_typing_instance + 1;
-//     valid_typing_instance = personal_typing_instance;
-//     let max = name_bank.length;
-//     let text = name_bank[Math.floor(Math.random() * max)]; //eventually I want to request this from my server... for now it has the ghetto solution
-//     let word = "";
-//     let j = 0;
-//     let word_interval = setInterval(typechar,150)
-//     let msg1 = "Welcome ";
-//     let msg2 = ", we've been waiting";
+function typeText() {
+    let heading = document.getElementById("welcome_tag");
+    let personal_typing_instance = valid_typing_instance + 1;
+    valid_typing_instance = personal_typing_instance;
+    let max = name_bank.length;
+    let text = name_bank[Math.floor(Math.random() * max)]; //eventually I want to request this from my server... for now it has the ghetto solution
+    let word = "";
+    let j = 0;
+    let word_interval = setInterval(typechar,150)
+    let msg1 = "Welcome ";
+    let msg2 = ", we've been waiting";
 
-//     function typechar(){
-//         if (j < text.length && personal_typing_instance == valid_typing_instance){
-//             word += text.charAt(j)
-//             heading.innerHTML = msg1 + word + msg2;
-//         } else if (j >= text.length && personal_typing_instance == valid_typing_instance) {
-//             if (j%8==0){
-//                 heading.innerHTML = msg1 + word + "|" + msg2; 
-//             } else if (j % 8 == 4){
-//                 typing_char = " "
-//                 heading.innerHTML = msg1 + word + " " + msg2;
-//             }
-//         } else if (personal_typing_instance!=valid_typing_instance) {
-//             clearInterval(word_interval);
-//         }
-//         j++;
-//     }
-// }
+    function typechar(){
+        if (j < text.length && personal_typing_instance == valid_typing_instance){
+            word += text.charAt(j)
+            heading.innerHTML = msg1 + word + msg2;
+        } else if (j >= text.length && personal_typing_instance == valid_typing_instance) {
+            if (j%8==0){
+                heading.innerHTML = msg1 + word + "|" + msg2; 
+            } else if (j % 8 == 4){
+                typing_char = " "
+                heading.innerHTML = msg1 + word + " " + msg2;
+            }
+        } else if (personal_typing_instance!=valid_typing_instance) {
+            clearInterval(word_interval);
+        }
+        j++;
+    }
+}
 
-// function changing_welcome_message(){
-//     let i = 0;
-//     typeText("test")
-//     function myloop() {
-//         setTimeout(function() {
-//             typeText("test");
-//             i++;
-//             if (i < 20) {
-//                 myloop();
-//             }
-//         }, 10000)
-//         }
-//         myloop();
-// }
+function changing_welcome_message(){
+    let i = 0;
+    typeText("test")
+    function myloop() {
+        setTimeout(function() {
+            typeText("test");
+            i++;
+            if (i < 20) {
+                myloop();
+            }
+        }, 10000)
+        }
+        myloop();
+}
 
 function type_response(message) {
     console.log('test')
@@ -263,25 +263,10 @@ function enter_event_listener(){
             console_history.innerHTML += "<div class='parent'>><p class='child'>" + 
                 user_input+"</p></div>";
             input_parent.remove();
-            fetch('/console_response/<' + user_input + '>')
+            fetch('/API/talk_to_me/' + user_input)
             .then((server_response) => server_response.json())
             .then((return_val) => return_val.response)
             .then((return_val) => type_response(return_val));
-            // .then(function (response_json){
-            //     let response_tmp = response_json.json().response;
-            //     let user_input = input.value
-            //     input.innerHTML.getElementById("user_input").remove()
-
-            // }).then()
         }
     });
-}
-
-// function console(message, elementid){
-//     let heading = document.getElementById(elementid)
-//     typeMessage(message, elementid)
-//     heading.innerHTML += 
-//     "</br>\n<p>>>><p>\n" +
-//     "<input></input>"
-// }
-    
+}    
