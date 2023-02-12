@@ -4,7 +4,7 @@ import json
 import socket
 import datetime
 
-debug = True
+debug = False
 
 if debug==False:
     print('DEBUG is ON')
