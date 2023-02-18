@@ -1,0 +1,51 @@
+/* horizontal nav bar css */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: skyblue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #525252;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: skyblue;
+    margin: 0px;
+}
+
+.main-container {
+    margin: 5px;
+}
+
+header {
+    background-color: #333;
+    width: 100%;
+    margin: 0px;
+}
+
+.contact-form {
+    position: fixed;
+    bottom: 0;
+
+    /* And if you want the div to be full-width: */
+    left: 0;
+    right: 0;
+}

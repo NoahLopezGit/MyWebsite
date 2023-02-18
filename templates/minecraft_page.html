@@ -1,42 +1,27 @@
 <!doctype html>
-<html>
 <html lang="en">
-
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Big L's Clubhouse</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="{{ url_for('static', filename='w3.css') }}">
-<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <title>Minecraft</title>
-    <meta name="description" content="Our first page">
-    <meta name="keywords" content="html tutorial template">
+    <script src="{{ url_for('static', filename='javascript_modules.js') }}"></script>
 </head>
-
-<header class="w3-display-container w3-content w3-center" style="max-width:1500px" id="home">
-    <img class="w3-image" src="{{ url_for('static', filename='Big_Ls_Clubhouse.png') }}" alt="Me" width="1500"
-        height="600">
-    <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center"
-        style="background-color: rgba(255,255,255,.5);">
-        <h1 style="color:black">MC server is: mc.BigLsClubhouse.com</h1>
-        <h1 style="font-size:20px;color:black;">{{ mc_server_status }}</h1>
+<body style="background-image: url({{url_for('static', filename='Big_Ls_Clubhouse.png')}});">
+    <header>
+        <h1 style="color: skyblue; text-align: center; width: 100%; margin: 0px;">Big L's Clubhouse</h1>
+    </header>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/minecraft">Minecraft</a></li>
+        <li><a href="/lepotato-display">LePotato Live</a></li>
+        <li><a href="/talk_to_me">Talk To me</a></li>
+    </ul>
+    <div style="max-width:1500px" id="home">
+        <img src="{{ url_for('static', filename='Big_Ls_Clubhouse.png') }}" alt="Me" width="1500" height="600">
+        <div style="background-color: rgba(255,255,255,.5);">
+            <h1 style="color:black">MC server is: mc.BigLsClubhouse.com</h1>
+            <h1 id="mc_server_status" style="font-size:20px;color:black;"></h1>
+        </div>
     </div>
-
-    <!-- Navbar (placed at the bottom of the header image) -->
-    <div class="w3-bar w3-light-grey w3-round w3-display-bottommiddle w3-hide-small" style="bottom:-16px">
-        <a href="/" class="w3-bar-item w3-button">Home</a>
-        <a href="/minecraft" class="w3-bar-item w3-button">Minecraft Server</a>
-        <a href="/#contact" class="w3-bar-item w3-button">Contact</a>
-    </div>
-</header>
-
-<!-- Navbar on small screens -->
-<div class="w3-center w3-light-grey w3-padding-16 w3-hide-large w3-hide-medium">
-    <div class="w3-bar w3-light-grey">
-        <a href="/" class="w3-bar-item w3-button">Home</a>
-        <a href="/minecraft" class="w3-bar-item w3-button">Minecraft Server</a>
-        <a href="/#contact" class="w3-bar-item w3-button">Contact</a>
-    </div>
-</div>
+    <script>get_mc_server_status()</script>
+</body>
 </html>

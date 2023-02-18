@@ -18,15 +18,19 @@ def home():
         with open(submission_filename, 'a') as submission_file:
             submission_file.write(':'.join([name,email,message])+'\n')
         
-    return render_template('main.html', user_ip=request.remote_addr)
+    return render_template('main.html')
 
 @app.route("/minecraft")
 def minecraft_page():
+    return render_template('minecraft_page.html')
+
+@app.route("/API/minecraft")
+def get_server_status():
     if is_server_down('localhost', 25565):
         mc_server_status = "Server is currently down"
     else:
         mc_server_status = "Server is currently up"
-    return render_template('minecraft_page.html', mc_server_status=mc_server_status)
+    return json.dumps({"mc_server_status":mc_server_status})
 
 @app.route("/talk_to_me", methods=('GET',))
 def contact_page():
@@ -55,6 +59,10 @@ def get_lepotato_webdisplay():
 def get_lepotato_webdisplay_data(value_id):
     print(value_id, getattr(lepotato_data, value_id))
     return json.dumps({value_id:getattr(lepotato_data, value_id)})
+
+# @app.route('/test')
+# def get_test():
+#     return render_template('testing.html')
 
 if __name__ == "__main__":
     app.debug=True

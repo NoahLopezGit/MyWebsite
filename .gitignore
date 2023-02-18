@@ -4,3 +4,7 @@ openai_api_key.json
 __pycache__
 .env
 testing
+testing.html
+template.html
+basic_page_template.html
+*.mp4

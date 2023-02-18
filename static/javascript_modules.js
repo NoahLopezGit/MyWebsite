@@ -270,3 +270,11 @@ function enter_event_listener(){
         }
     });
 }    
+
+function get_mc_server_status(){
+    let server_status_element = document.getElementById('mc_server_status')
+    fetch('/API/minecraft')
+        .then((server_response) => server_response.json())
+        .then((return_val) => return_val.mc_server_status)
+        .then((mc_server_status) => server_status_element.innerHTML=mc_server_status)
+}
