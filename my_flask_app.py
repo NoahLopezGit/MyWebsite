@@ -6,9 +6,9 @@ import json
 
 app = Flask(__name__)
 debug = False
-submission_filename = 'user_submissions.txt'
+submission_filename = '/var/www/html/MyWebsite/user_submissions.txt'
 lepotato_data = LePotatoDisplayData()
-my_bridge = HueBridge('website_conf.json')
+my_bridge = HueBridge('/var/www/html/MyWebsite/website_conf.json')
 
 @app.route("/", methods=('GET', 'POST'))
 def home():
