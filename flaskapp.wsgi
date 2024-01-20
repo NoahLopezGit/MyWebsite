@@ -8,4 +8,4 @@ import sys
 #    exec(file_.read(), dict(__file__=activate_this))
 
 # Activate venv option 3 is to pass python-home=/path/to/venv in the WSGIDaemonProcess line 
-from my_flask_app import app as application
+from flaskapp import app as application
