@@ -8,4 +8,6 @@ import sys
 #    exec(file_.read(), dict(__file__=activate_this))
 
 # Activate venv option 3 is to pass python-home=/path/to/venv in the WSGIDaemonProcess line 
+sys.path.insert(0,'/var/www/MyWebsite')
+sys.path.insert(0,'/var/www/MyWebsite/venv/lib/python3.8/site-packages/')
 from flaskapp import app as application
