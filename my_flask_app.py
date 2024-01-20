@@ -1,12 +1,14 @@
 from flask import Flask, render_template, jsonify, request
 from flask_method_module import create_response, is_server_down, LePotatoDisplayData
+from hue_control_class import HueBridge
 import requests
 import json
 
 app = Flask(__name__)
 debug = False
-submission_filename = '/opt/FlaskApp/FlaskApp/user_submissions.txt'
+submission_filename = 'user_submissions.txt'
 lepotato_data = LePotatoDisplayData()
+my_bridge = HueBridge('website_conf.json')
 
 @app.route("/", methods=('GET', 'POST'))
 def home():
@@ -19,6 +21,19 @@ def home():
             submission_file.write(':'.join([name,email,message])+'\n')
         
     return render_template('main.html')
+
+#hue site
+@app.route("/hue", methods=('GET',)) 
+def hue_page():
+    return render_template('hue_control.html')
+
+#api
+@app.route("/API/hue/<light_name>", methods=('POST',))
+def control_light(light_name):
+    body = request.get_json()
+    print(body)
+    my_bridge.control_light(light_name, body)
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
 @app.route("/minecraft")
 def minecraft_page():
