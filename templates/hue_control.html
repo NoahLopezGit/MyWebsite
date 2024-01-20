@@ -11,7 +11,7 @@
     <script>
         function sendPostRequest(event, light_name) {
             var isChecked = event.target.checked;
-            const url = 'http://localhost/API/hue/' + light_name;
+            const url = 'http://biglsclubhouse.com/API/hue/' + light_name;
             const data = { 'on': { 'on': isChecked } };
             fetch(url, {
                 method: 'POST',
