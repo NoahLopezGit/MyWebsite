@@ -8,3 +8,6 @@ testing.html
 template.html
 basic_page_template.html
 *.mp4
+*.m4a
+website_conf.json
+test.py
