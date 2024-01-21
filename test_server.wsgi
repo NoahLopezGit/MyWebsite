@@ -9,5 +9,4 @@ import sys
 
 # Activate venv option 3 is to pass python-home=/path/to/venv in the WSGIDaemonProcess line 
 sys.path.insert(0,'/var/www/MyWebsite')
-sys.path.insert(0,'/var/www/MyWebsite/venv/lib/python3.12/site-packages/')
 from test_server import app as application
