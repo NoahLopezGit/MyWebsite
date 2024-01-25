@@ -56,6 +56,11 @@ def control_light(light_name):
     my_bridge.control_light(light_name, body)
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
+@app.route("/API/hue/light-states", methods=('GET',))
+def get_light_power_states():
+    power_states = my_bridge.get_light_states()
+    return json.dumps(power_states)
+
 @app.route("/API/minecraft")
 def get_server_status():
     if is_server_down('localhost', 25565):
