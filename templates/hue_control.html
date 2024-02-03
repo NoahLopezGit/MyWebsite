@@ -9,7 +9,7 @@
 <body>
     <!-- <p>Hello</p> -->
     <script>
-        function sendPostRequest(event, light_name) {
+        function sendLightControlRequest(event, light_name) {
             var isChecked = event.target.checked;
             const url = '/API/hue/' + light_name;
             const data = { 'on': { 'on': isChecked } };
@@ -44,23 +44,23 @@
         getLightStates()
         setInterval(getLightStates, 10000);
     </script>
-    <!-- <button onclick="sendPostRequest()">Click me</button> -->
+    <!-- <button onclick="sendLightControlRequest()">Click me</button> -->
     <br>
     <span class="label">Light 1</span>
     <label class="switch">
-        <input id='light1' type="checkbox" onclick="sendPostRequest(event, 'light1')">
+        <input id='light1' type="checkbox" onclick="sendLightControlRequest(event, 'light1')">
         <span class="slider"></span>
     </label>
     <br>
     <span class="label">Light 2</span>
     <label class="switch">
-        <input id='light2' type="checkbox" onclick="sendPostRequest(event, 'light2')">
+        <input id='light2' type="checkbox" onclick="sendLightControlRequest(event, 'light2')">
         <span class="slider"></span>
     </label>
     <br>
     <span class="label">Light 3</span>
     <label class="switch">
-        <input id='light3' type="checkbox" onclick="sendPostRequest(event, 'light3')">
+        <input id='light3' type="checkbox" onclick="sendLightControlRequest(event, 'light3')">
         <span class="slider"></span>
     </label>
 
