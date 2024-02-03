@@ -3,7 +3,7 @@ from flask import Flask, render_template, jsonify, request
 from hue_control import HueBridge
 from lepotato_interface import LePotatoDisplayData
 from minecraft_server_interface import is_server_down
-from openai_chat import get_open_ai_key, create_response
+# from openai_chat import get_open_ai_key, create_response
 
 
 #setup
@@ -13,7 +13,7 @@ website_conf_filepath = os.path.join(website_directory,'website_conf.json')
 submission_filename = os.path.join(website_directory,'user_submission.txt')
 lepotato_data = LePotatoDisplayData()
 my_bridge = HueBridge(website_conf_filepath)
-get_open_ai_key(website_conf_filepath) #TODO fix this, access method deprecated
+# get_open_ai_key(website_conf_filepath) #TODO fix this, access method deprecated
 
 #Sites
 @app.route("/", methods=('GET', 'POST'))
@@ -36,9 +36,9 @@ def hue_page():
 def minecraft_page():
     return render_template('minecraft_page.html')
 
-@app.route("/talk_to_me", methods=('GET',)) #TODO fix this page, access method deprecated.
-def contact_page():
-    return render_template('contact.html')
+# @app.route("/talk_to_me", methods=('GET',)) #TODO fix this page, access method deprecated.
+# def contact_page():
+#     return render_template('contact.html')
 
 @app.route('/lepotato-display', methods=('GET',))
 def get_lepotato_webdisplay():
@@ -69,11 +69,11 @@ def get_server_status():
         mc_server_status = "Server is currently up"
     return json.dumps({"mc_server_status":mc_server_status})
 
-@app.route("/API/talk_to_me/<user_input>", methods=('GET',))
-def user_response(user_input):
-    response = create_response(user_input)
-    print(response)
-    return jsonify(response=response)
+# @app.route("/API/talk_to_me/<user_input>", methods=('GET',))
+# def user_response(user_input):
+#     response = create_response(user_input)
+#     print(response)
+#     return jsonify(response=response)
 
 @app.route('/API/lepotato-host', methods=('POST',))
 def lepotato_webhost_update():
